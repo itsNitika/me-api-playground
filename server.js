@@ -4,7 +4,7 @@ const bp = require('body-parser');
 const pth = require('path');
 
 const app = exp();
-const prt = 3000;
+const prt = process.env.PORT || 3000;
 const uri = 'mongodb://127.0.0.1:27017/portfolioDB';
 
 app.use(bp.json());
