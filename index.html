@@ -4,13 +4,406 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nitika Pandey | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --txt: #f8fafc;
+            --sec: #94a3b8;
+            --acc: #38bdf8;
+            --gld: #fbbf24;
+        }
 
-</style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--txt);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        header {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            position: relative;
+        }
+
+        .nav {
+            position: absolute;
+            top: 2rem;
+            right: 10%;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: var(--sec);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .nav a:hover {
+            color: var(--acc);
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--acc), #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--sec);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.05);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            min-width: 150px;
+        }
+
+        .stat-val {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gld);
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-lbl {
+            font-size: 0.85rem;
+            color: var(--sec);
+            font-weight: 600;
+        }
+        
+        .stat-sub {
+            font-size: 0.75rem;
+            color: var(--acc);
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        .cta-grp {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            border: 1px solid var(--acc);
+        }
+
+        .btn-pri {
+            background: var(--acc);
+            color: var(--bg);
+        }
+
+        .btn-sec {
+            background: transparent;
+            color: var(--acc);
+        }
+
+        section {
+            padding: 5rem 10%;
+        }
+
+        .sec-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            border-left: 5px solid var(--acc);
+            padding-left: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: transform 0.2s;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--acc);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-sub {
+            color: var(--acc);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card p {
+            color: var(--sec);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--acc);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-cat h4 {
+            color: var(--txt);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            color: var(--sec);
+        }
+
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-list li::before {
+            content: "▹";
+            color: var(--acc);
+            margin-right: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--sec);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            header { padding: 0 5%; }
+            section { padding: 3rem 5%; }
+            .nav { display: none; } 
+        }
+    </style>
 </head>
 <body>
+
+    <header>
+        <nav class="nav">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <h1>Nitika Pandey</h1>
+        <h2>Aspiring Software Engineer<br><span style="font-size: 1rem; color: #64748b;">C++ | MERN Stack | Python | DSA</span></h2>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-val">600+</div>
+                <div class="stat-lbl">LeetCode Solved</div>
+                <span class="stat-sub">Strong DSA Foundation</span>
+            </div>
+            <div class="stat-box">
+                <div class="stat-val">1000+</div>
+                <div class="stat-lbl">Codeforces Rating</div>
+                <span class="stat-sub">Competitive Programming</span>
+            </div>
+            <div class="stat-box">
+                <div class="stat-val">92%</div>
+                <div class="stat-lbl">Academic Excellence</div>
+                <span class="stat-sub">Class 12th Score</span>
+            </div>
+        </div>
+
+        <div class="cta-grp">
+            <a href="#contact" class="btn btn-pri">Contact Me</a>
+            <a href="#" class="btn btn-sec">LinkedIn</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <h3 class="sec-title">About Me</h3>
+        <p style="color: var(--sec); max-width: 800px; font-size: 1.1rem;">
+            I am a B.Tech Electrical Engineering student at <strong>NIT Delhi</strong> (Class of 2027) with a strong passion for software development and problem-solving. 
+            With over <strong>600+ DSA problems solved</strong> on LeetCode, I combine algorithmic efficiency with full-stack development skills.
+            I have hands-on experience building responsive web applications using the <strong>MERN stack</strong> and integrating hardware solutions like self-balancing robots using Arduino.
+        </p>
+    </section>
+
+    <section id="skills">
+        <h3 class="sec-title">Technical Arsenal</h3>
+        <div class="skills-grid">
+            <div class="skill-cat">
+                <h4>Languages</h4>
+                <ul class="skill-list">
+                    <li>C / C++ (DSA)</li>
+                    <li>Python</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+            <div class="skill-cat">
+                <h4>Web Development</h4>
+                <ul class="skill-list">
+                    <li>React.js & Redux</li>
+                    <li>Node.js & Express</li>
+                    <li>MongoDB</li>
+                    <li>HTML5 / CSS3 / Bootstrap</li>
+                </ul>
+            </div>
+            <div class="skill-cat">
+                <h4>Tools & Libraries</h4>
+                <ul class="skill-list">
+                    <li>Pandas / Numpy</li>
+                    <li>Matplotlib</li>
+                    <li>Firebase (Auth/DB)</li>
+                    <li>Git / GitHub</li>
+                </ul>
+            </div>
+            <div class="skill-cat">
+                <h4>Coursework</h4>
+                <ul class="skill-list">
+                    <li>Data Structures & Algos</li>
+                    <li>OOPs & DBMS</li>
+                    <li>Operating Systems</li>
+                    <li>Computer Networks</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h3 class="sec-title">Featured Projects</h3>
+        <div class="grid">
+            <div class="card">
+                <h3>Baker’s Nest</h3>
+                <span class="card-sub">MongoDB, Express, React, Node.js</span>
+                <p>A fully responsive e-commerce bakery website featuring a seamless cart/checkout experience. Integrated RazorPay for secure payments and Auth0 for authentication. Optimized database queries improving performance by 30%.</p>
+                <div class="tags">
+                    <span class="tag">MERN Stack</span>
+                    <span class="tag">E-Commerce</span>
+                    <span class="tag">Redux</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Prep Code Beacon</h3>
+                <span class="card-sub">React, Firebase, Bootstrap</span>
+                <p>A web platform streamlining technical interview prep with categorized DSA questions. Features company-wise filtering, progress tracking dashboards, and a structured tagging system for personalized learning paths.</p>
+                <div class="tags">
+                    <span class="tag">Frontend</span>
+                    <span class="tag">Education Tech</span>
+                    <span class="tag">Firebase</span>
+                </div>
+            </div>
+
+             <div class="card">
+                <h3>Self-Balancing Robot</h3>
+                <span class="card-sub">Arduino UNO, MPU6050, PID</span>
+                <p>Built a two-wheeled self-balancing robot using PID control and sensor fusion. Implemented tilt detection via MPU6050 and integrated Bluetooth HC-05 for remote monitoring and dynamic tuning.</p>
+                <div class="tags">
+                    <span class="tag">Robotics</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">Hardware</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <h3 class="sec-title">Achievements & Activities</h3>
+        <div class="grid">
+            <div class="card">
+                <h3>Competitive Programming</h3>
+                <p>
+                    <strong>LeetCode:</strong> Solved 600+ questions covering a wide range of data structures.<br>
+                    <strong>Codeforces:</strong> Rated Competitive Programmer (1000+) consistently solving algorithmic problems under time constraints.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Leadership & Extracurriculars</h3>
+                <p>
+                    <strong>Cultural Club:</strong> Executive Member (Nov 2023 - Present). Managed stage plays and script writing.<br>
+                    <strong>Photography Club:</strong> Executive Member. Led exhibitions and increased social media engagement by 30%.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="text-align: center; padding: 5rem 0;">
+        <h3 style="font-size: 2.5rem; margin-bottom: 1rem;">Let's Connect</h3>
+        <p style="color: var(--sec); margin-bottom: 2rem;">Open to SDE Internships and collaborative projects.</p>
+        <a href="mailto:231230039@nitdelhi.ac.in" class="btn btn-pri" style="font-size: 1.2rem;">231230039@nitdelhi.ac.in</a>
+        <div style="margin-top: 1rem; color: var(--sec);">
+            <p>+91 9650633169</p>
+        </div>
+        <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; color: var(--sec);">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">LeetCode</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Built by Nitika Pandey &copy; 2025</p>
+    </footer>
+
 </body>
 </html>
